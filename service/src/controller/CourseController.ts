@@ -14,7 +14,7 @@ export class CourseController {
 
     @get('/pull')
     @use(checkLogin)
-    update(req: Request, res: Response) {
+    pullData(req: Request, res: Response) {
         const fileName = 'course';
         const url = 'http://www.dell-lee.com/';
         const analyzer = CourseAnalyzer.getInstance();

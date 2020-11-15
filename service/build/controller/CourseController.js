@@ -22,7 +22,7 @@ var path_1 = __importDefault(require("path"));
 var CourseController = /** @class */ (function () {
     function CourseController() {
     }
-    CourseController.prototype.update = function (req, res) {
+    CourseController.prototype.pullData = function (req, res) {
         var fileName = 'course';
         var url = 'http://www.dell-lee.com/';
         var analyzer = courseAnalyzer_1.CourseAnalyzer.getInstance();
@@ -46,7 +46,7 @@ var CourseController = /** @class */ (function () {
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", void 0)
-    ], CourseController.prototype, "update", null);
+    ], CourseController.prototype, "pullData", null);
     __decorate([
         decorator_1.get('/'),
         decorator_1.use(util_1.checkLogin),
