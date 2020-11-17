@@ -5,6 +5,11 @@ import { Request, Response, NextFunction } from 'express';
 import { get, post, controller, use } from '../decorator';
 import { getResponseData, checkLogin } from '../utils/util';
 
+const user = {
+    userName: 'admin',
+    password: '112233',
+};
+
 
 @controller('/core')
 export class LoginController {
@@ -16,7 +21,14 @@ export class LoginController {
     @get('/isLogin')
     isLogin(req: Request, res: Response) {
         const isLogin = LoginController.isLogin(req);
-        res.json(getResponseData(isLogin));
+        if (isLogin) {
+            res.json(getResponseData({
+                userName: user.userName,
+                avator: 'http://localhost:7001/images/avator1.png',
+            }));
+        } else {
+            res.json(getResponseData(false));
+        }
     }
 
     @post('/login')
@@ -25,7 +37,7 @@ export class LoginController {
         if (LoginController.isLogin(req)) {
             res.send(getResponseData(true));
         } else {
-            if (username === 'admin' && password === '112233' && req.session) {
+            if (username === user.userName && password === user.password && req.session) {
                 req.session.login = true;
                 res.json(getResponseData(true));
             } else {

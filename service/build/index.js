@@ -16,6 +16,7 @@ app.use(cookie_session_1.default({
     keys: ['node-spider'],
     maxAge: 24 * 60 * 60 * 1000
 }));
+app.use(express_1.default.static('static'));
 app.use(router_1.router);
 app.listen(7001, function () {
     console.log('server is running at http://lcoalhost:7001');

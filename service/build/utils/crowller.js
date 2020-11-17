@@ -60,7 +60,7 @@ var Crowller = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.getRawHtml()];
                     case 1:
                         html = _a.sent();
-                        content = this.analyzer.analyze(html, this.filePath);
+                        content = this.analyzer.analyze(html, this.filePath, this.url);
                         this.writeFile(content);
                         return [2 /*return*/];
                 }

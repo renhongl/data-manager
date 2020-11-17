@@ -1,0 +1,14 @@
+
+
+.duboku{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    nz-card{
+        margin: 10px !important;
+    }
+}

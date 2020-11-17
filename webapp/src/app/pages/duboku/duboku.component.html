@@ -1,0 +1,9 @@
+<div class="duboku">
+    <nz-card nzHoverable style="width:200px;" [nzCover]="coverTemplate" *ngFor="let item of data" (click)="openTv(item)">
+        <nz-card-meta nzTitle="{{item.title}}" nzDescription="{{item.actors}}"></nz-card-meta>
+        <ng-template #coverTemplate>
+            <img alt="example" src="{{item.image}}" />
+          </ng-template>
+      </nz-card>
+      
+</div>

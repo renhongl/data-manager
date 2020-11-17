@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 
 export interface Analyzer {
-    analyze: (html: string, filePath: string) => string;
+    analyze: (html: string, filePath: string, url?: string) => string;
 }
 
 export class Crowller {
@@ -17,7 +17,7 @@ export class Crowller {
 
     private async initSpiderProcess() {
         const html = await this.getRawHtml();
-        const content = this.analyzer.analyze(html, this.filePath);
+        const content = this.analyzer.analyze(html, this.filePath, this.url);
         this.writeFile(content);
     }
 

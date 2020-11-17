@@ -1,0 +1,39 @@
+<div class="home" *ngIf="loaded">
+  <div class="left">
+    <div class="header">
+      数据管理系统
+    </div>
+    <ul nz-menu nzMode="inline" style="width: 240px;">
+      <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
+      <ng-template #menuTpl let-menus>
+        <ng-container *ngFor="let menu of menus">
+          <li *ngIf="!menu.children" nz-menu-item [nzPaddingLeft]="menu.level * 24" [nzDisabled]="menu.disabled"
+            [nzSelected]="menu.url === current" (click)="switchPage(menu)">
+            <i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
+            <span>{{ menu.title }}</span>
+          </li>
+          <li *ngIf="menu.children" nz-submenu [nzPaddingLeft]="menu.level * 24" [nzOpen]="menu.open"
+            [nzTitle]="menu.title" [nzIcon]="menu.icon" [nzDisabled]="menu.disabled" (click)="switchPage(menu)">
+            <ul>
+              <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children }"></ng-container>
+            </ul>
+          </li>
+        </ng-container>
+      </ng-template>
+    </ul>
+    <div class="bottom">
+      <div class="avator" [nzPopoverContent]="contentTemplate" nz-popover nzPopoverPlacement="topRight"></div>
+      <ng-template #contentTemplate>
+        <a>设置</a><br />
+        <a (click)="logout()">退出登录</a>
+      </ng-template>
+      <div class="name">
+        <span class="title">admin</span>
+        <span class="email">10755220132@qq.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <router-outlet></router-outlet>
+  </div>
+</div>

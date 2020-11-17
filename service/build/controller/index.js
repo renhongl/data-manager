@@ -12,4 +12,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./CourseController"), exports);
 __exportStar(require("./LoginController"), exports);
-__exportStar(require("./WeiboController"), exports);
+__exportStar(require("./DubokuController"), exports);

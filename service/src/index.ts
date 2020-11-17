@@ -18,6 +18,8 @@ app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000
 }));
 
+app.use(express.static('static'));
+
 app.use(router);
 
 app.listen(7001, () => {

@@ -12,6 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginController = void 0;
 var decorator_1 = require("../decorator");
 var util_1 = require("../utils/util");
+var user = {
+    userName: 'admin',
+    password: '112233',
+};
 var LoginController = /** @class */ (function () {
     function LoginController() {
     }
@@ -21,7 +25,15 @@ var LoginController = /** @class */ (function () {
     };
     LoginController.prototype.isLogin = function (req, res) {
         var isLogin = LoginController_1.isLogin(req);
-        res.json(util_1.getResponseData(isLogin));
+        if (isLogin) {
+            res.json(util_1.getResponseData({
+                userName: user.userName,
+                avator: 'http://localhost:7001/images/avator1.png',
+            }));
+        }
+        else {
+            res.json(util_1.getResponseData(false));
+        }
     };
     LoginController.prototype.login = function (req, res) {
         var _a = req.body, username = _a.username, password = _a.password;
@@ -29,7 +41,7 @@ var LoginController = /** @class */ (function () {
             res.send(util_1.getResponseData(true));
         }
         else {
-            if (username === 'admin' && password === '112233' && req.session) {
+            if (username === user.userName && password === user.password && req.session) {
                 req.session.login = true;
                 res.json(util_1.getResponseData(true));
             }
