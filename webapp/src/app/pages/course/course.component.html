@@ -1,1 +1,16 @@
-<p>course works!</p>
+<nz-page-header class="site-page-header" nzTitle="课程数据" [nzSubtitle]="'更新于：' + time">
+    <nz-page-header-extra>
+        <button nz-button (click)="pullData()">拉取数据</button>
+        <button nz-button nzType="primary" (click)="refresh()">刷新</button>
+      </nz-page-header-extra>
+</nz-page-header>
+<div class="course">
+
+  <nz-card nzHoverable style="width:200px;" [nzCover]="coverTemplate" *ngFor="let item of data">
+    <nz-card-meta nzTitle="{{item.title}}" nzDescription="{{item.count}}"></nz-card-meta>
+    <ng-template #coverTemplate>
+      <img alt="example" src="{{item.image}}" />
+    </ng-template>
+  </nz-card>
+
+</div>

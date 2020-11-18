@@ -24,9 +24,9 @@ export class HomeComponent implements OnInit {
     },
     {
       level: 1,
-      title: '模块',
+      title: '数据展示',
       icon: 'appstore',
-      open: false,
+      open: true,
       selected: false,
       disabled: false,
       children: [
@@ -43,8 +43,23 @@ export class HomeComponent implements OnInit {
           url: 'duboku',
           selected: false,
           disabled: false
+        },
+        {
+          level: 2,
+          title: '头条',
+          url: 'toutiao',
+          selected: false,
+          disabled: false
         }
       ]
+    },
+    {
+      level: 1,
+      title: '接口',
+      icon: 'user',
+      url: 'api',
+      selected: false,
+      disabled: false
     },
     {
       level: 1,

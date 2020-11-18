@@ -13,3 +13,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./CourseController"), exports);
 __exportStar(require("./LoginController"), exports);
 __exportStar(require("./DubokuController"), exports);
+__exportStar(require("./ToutiaoController"), exports);

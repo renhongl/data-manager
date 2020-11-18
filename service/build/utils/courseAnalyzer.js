@@ -15,7 +15,7 @@ var CourseAnalyzer = /** @class */ (function () {
         }
         return CourseAnalyzer.instance;
     };
-    CourseAnalyzer.prototype.getCourseInfo = function (html) {
+    CourseAnalyzer.prototype.getCourseInfo = function (html, url) {
         var $ = cheerio_1.default.load(html);
         var course = [];
         var items = $('.course-item');
@@ -24,7 +24,7 @@ var CourseAnalyzer = /** @class */ (function () {
             var img = $(ele).find('.course-img');
             course.push({
                 title: desc.text(),
-                image: img.attr('src') || '',
+                image: url + img.attr('src') || '',
                 count: Math.round(Math.random() * 100 + 20),
             });
         });
@@ -41,8 +41,9 @@ var CourseAnalyzer = /** @class */ (function () {
         content[result.time] = result.data;
         return content;
     };
-    CourseAnalyzer.prototype.analyze = function (html, filePath) {
-        var result = this.getCourseInfo(html);
+    CourseAnalyzer.prototype.analyze = function (html, filePath, url) {
+        if (url === void 0) { url = ''; }
+        var result = this.getCourseInfo(html, url);
         var content = this.generateJson(result, filePath);
         return JSON.stringify(content);
     };

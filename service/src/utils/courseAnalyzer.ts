@@ -31,7 +31,7 @@ export class CourseAnalyzer implements Analyzer{
 
     private constructor() {}
 
-    private getCourseInfo(html: string) {
+    private getCourseInfo(html: string, url: string) {
         const $ = cheerio.load(html);
         const course: Course[] = [];
         const items = $('.course-item');
@@ -40,7 +40,7 @@ export class CourseAnalyzer implements Analyzer{
             const img = $(ele).find('.course-img');
             course.push({
                 title: desc.text(),
-                image: img.attr('src') || '',
+                image: url + img.attr('src') || '',
                 count: Math.round(Math.random() * 100 + 20),
             });
         });
@@ -59,8 +59,8 @@ export class CourseAnalyzer implements Analyzer{
         return content;
     }
 
-    public analyze(html: string, filePath: string) {
-        const result = this.getCourseInfo(html);
+    public analyze(html: string, filePath: string, url: string = '') {
+        const result = this.getCourseInfo(html, url);
         const content = this.generateJson(result, filePath);
         return JSON.stringify(content);
     }

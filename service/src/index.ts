@@ -6,6 +6,7 @@ import cookieSession from 'cookie-session';
 import './controller';
 import { router } from './router';
 
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));

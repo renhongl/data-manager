@@ -22,14 +22,44 @@ var path_1 = __importDefault(require("path"));
 var WeiboController = /** @class */ (function () {
     function WeiboController() {
     }
+    /**
+     * @api {get} /duboku/pull 拉取新数据
+     * @apiName pullDuboku
+     * @apiGroup 独播库
+     *
+     * @apiSuccess {Boolean} success 接口请求是否成功
+     * @apiSuccess {Boolean} data 是否成功拉取数据
+     *
+     * @apiSuccessExample 成功的响应:
+     *     HTTP/1.1 200 OK
+     *     {
+     *       "success": true,
+     *       "data": true
+     *     }
+     */
     WeiboController.prototype.pullData = function (req, res) {
         var fileName = 'duboku';
-        var url = 'https://www.duboku.co/';
+        var url = 'https://www.duboku.co';
         var analyzer = dubokuAnalyzer_1.DubokuAnalyzer.getInstance();
         new crowller_1.Crowller(url, fileName, analyzer);
         console.log('Pulled new data from duboku website');
         res.json(util_1.getResponseData(true));
     };
+    /**
+     * @api {get} /duboku 获取独播库数据
+     * @apiName getDuboku
+     * @apiGroup 独播库
+     *
+     * @apiSuccess {Boolean} success 接口请求是否成功
+     * @apiSuccess {Boolean} data 独播库数据数组
+     *
+     * @apiSuccessExample 成功的响应:
+     *     HTTP/1.1 200 OK
+     *     {
+     *       "success": true,
+     *       "data": true
+     *     }
+     */
     WeiboController.prototype.getData = function (req, res) {
         try {
             var filePath = path_1.default.resolve(__dirname, '../../data/duboku.json');

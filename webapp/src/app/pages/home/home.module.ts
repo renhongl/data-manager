@@ -22,6 +22,14 @@ const routes: Routes = [
         loadChildren: () => import('../duboku/duboku.module').then(m => m.DubokuModule),
       },
       {
+        path: 'toutiao',
+        loadChildren: () => import('../toutiao/toutiao.module').then(m => m.ToutiaoModule),
+      },
+      {
+        path: 'api',
+        loadChildren: () => import('../api/api.module').then(m => m.ApiModule),
+      },
+      {
         path: 'about',
         loadChildren: () => import('../about/about.module').then(m => m.AboutModule),
       }

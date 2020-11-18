@@ -11,4 +11,8 @@ export class DubokuService {
   getData() {
       return this.http.get('/api/duboku');
   }
+
+  pullData() {
+    return this.http.get('/api/duboku/pull');
+  }
 }

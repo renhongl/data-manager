@@ -22,14 +22,44 @@ var path_1 = __importDefault(require("path"));
 var CourseController = /** @class */ (function () {
     function CourseController() {
     }
+    /**
+     * @api {get} /course/pull 拉取新数据
+     * @apiName pullCourse
+     * @apiGroup 课程
+     *
+     * @apiSuccess {Boolean} success 接口请求是否成功
+     * @apiSuccess {Boolean} data 是否拉取数据成功
+     *
+     * @apiSuccessExample 成功的响应:
+     *     HTTP/1.1 200 OK
+     *     {
+     *       "success": true,
+     *       "data": true
+     *     }
+     */
     CourseController.prototype.pullData = function (req, res) {
         var fileName = 'course';
-        var url = 'http://www.dell-lee.com/';
+        var url = 'http://www.dell-lee.com';
         var analyzer = courseAnalyzer_1.CourseAnalyzer.getInstance();
         new crowller_1.Crowller(url, fileName, analyzer);
         console.log('Pulled new data from course website');
         res.json(util_1.getResponseData(true));
     };
+    /**
+     * @api {get} /course 获取课程数据
+     * @apiName getCourse
+     * @apiGroup 课程
+     *
+     * @apiSuccess {Boolean} success 接口请求是否成功
+     * @apiSuccess {Array} data 课程数据数组
+     *
+     * @apiSuccessExample 成功的响应:
+     *     HTTP/1.1 200 OK
+     *     {
+     *       "success": true,
+     *       "data": []
+     *     }
+     */
     CourseController.prototype.getData = function (req, res) {
         try {
             var filePath = path_1.default.resolve(__dirname, '../../data/course.json');
