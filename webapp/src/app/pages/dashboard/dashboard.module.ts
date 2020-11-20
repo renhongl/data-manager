@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AntdModule } from '../../shared/antd.module';
+import { CommonMModule } from '../../common/common.module';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     AntdModule,
+    CommonMModule,
   ]
 })
 export class DashboardModule { }

@@ -19,8 +19,11 @@
     "@angular/platform-browser": "~10.1.2",
     "@angular/platform-browser-dynamic": "~10.1.2",
     "@angular/router": "~10.1.2",
+    "mtl-obj-loader": "^1.0.4",
     "ng-zorro-antd": "^10.1.2",
     "rxjs": "~6.4.0",
+    "three": "^0.122.0",
+    "threejs-orbit-controls": "^1.0.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
